@@ -36,14 +36,17 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-const cards = document.getElementsByClassName('card');
+let cards = document.getElementsByClassName('card');;
 let openCards = [];
 let moves = 0;
 
+function getCards() {
+  cards = document.getElementsByClassName('card');
+}
 
 for (card of cards) {
   card.addEventListener('click', function() {
-    if (card.className != 'card open show') {
+    if (this.className != 'card open show' && this.className != 'card match') {
       showCard(this);
       cardCounter(this);
     }
@@ -51,7 +54,6 @@ for (card of cards) {
 }
 
 function showCard(card) {
-  console.log(card);
   card.className = 'card open show';
 }
 
