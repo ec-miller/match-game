@@ -84,6 +84,31 @@ function movesCounter() {
   const movesDisplay = document.getElementsByClassName('moves');
   console.log(movesDisplay);
   movesDisplay[0].innerHTML = moves;
+  calcStars(moves);
+}
+
+function calcStars(moves) {
+  if (moves < 11) {
+    return;
+  } else if (moves < 14) {
+    let star3 = document.getElementById('star3');
+    star3.className = 'fa fa-star-half-o'
+  } else if (moves < 16) {
+    let star3 = document.getElementById('star3');
+    star3.className = 'fa fa-star-o'
+  } else if (moves < 19) {
+    let star2 = document.getElementById('star2');
+    star2.className = 'fa fa-star-half-o'
+  } else if (moves < 21) {
+    let star2 = document.getElementById('star2');
+    star2.className = 'fa fa-star-o'
+  } else if (moves < 24) {
+    let star1 = document.getElementById('star1');
+    star1.className = 'fa fa-star-half-o'
+  } else {
+    let star1 = document.getElementById('star1');
+    star1.className = 'fa fa-star-o'
+  }
 }
 
 function match(card0,card1) {
