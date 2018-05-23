@@ -29,6 +29,7 @@ let cards = document.getElementsByClassName('card');
 let openCards = [];
 let moves = 0;
 let movesDisplay = document.getElementsByClassName('moves');
+let matches = 0;
 
 //create list of icons based off of HTML
 const cardIcons = [];
@@ -51,6 +52,7 @@ let refresh = document.getElementById('refresh');
 refresh.addEventListener('click', function() {
   resetCards();
   moves = 0;
+  matches = 0;
   movesDisplay[0].innerHTML = moves;
   for (card of cards) {
   card.className = 'card';
@@ -76,6 +78,7 @@ for (card of cards) {
     if (this.className != 'card open show' && this.className != 'card match') {
       showCard(this);
       cardCounter(this);
+      win();
     }
   });
 }
@@ -137,19 +140,41 @@ function calcStars(moves) {
 }
 
 function match(card0,card1) {
-  console.log('match')
   setTimeout(function() {
     card0.className = 'card match'
     card1.className = 'card match'
   },750)
+  matches++;
 }
 
 function fail(card0,card1) {
-  console.log('FAIL')
   setTimeout(function() {
     card0.className = 'card'
     card1.className = 'card'
   },1500)
 }
 
-//TODO need win sequence
+//win sequence - based off of tutorial at https://www.w3schools.com/howto/howto_css_modals.asp
+function win() {
+  if (matches === 8) {
+    let movesMessage = document.getElementById('movesMessage');
+    movesMessage.innerHTML = `You beat the game in ${moves} moves`;
+    setTimeout(function() {
+      modal.style.display = "block";
+    },1000)
+  }
+
+}
+
+const modal = document.getElementById('winModal');
+const span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
