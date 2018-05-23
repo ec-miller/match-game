@@ -52,6 +52,7 @@ let refresh = document.getElementById('refresh');
 refresh.addEventListener('click', function() {
   resetCards();
   moves = 0;
+  calcStars(moves);
   matches = 0;
   movesDisplay[0].innerHTML = moves;
   for (card of cards) {
@@ -116,25 +117,24 @@ function movesCounter() {
 }
 
 function calcStars(moves) {
+  let star1 = document.getElementById('star1');
+  let star2 = document.getElementById('star2');
+  let star3 = document.getElementById('star3');
   if (moves < 11) {
-    return;
+    star1.className = 'fa fa-star'
+    star2.className = 'fa fa-star'
+    star3.className = 'fa fa-star'
   } else if (moves < 14) {
-    let star3 = document.getElementById('star3');
     star3.className = 'fa fa-star-half-o'
   } else if (moves < 16) {
-    let star3 = document.getElementById('star3');
     star3.className = 'fa fa-star-o'
   } else if (moves < 19) {
-    let star2 = document.getElementById('star2');
     star2.className = 'fa fa-star-half-o'
   } else if (moves < 21) {
-    let star2 = document.getElementById('star2');
     star2.className = 'fa fa-star-o'
   } else if (moves < 24) {
-    let star1 = document.getElementById('star1');
     star1.className = 'fa fa-star-half-o'
   } else {
-    let star1 = document.getElementById('star1');
     star1.className = 'fa fa-star-o'
   }
 }
