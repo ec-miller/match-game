@@ -25,6 +25,39 @@ function shuffle(array) {
     return array;
 }
 
+let cards = document.getElementsByClassName('card');
+let openCards = [];
+let moves = 0;
+let movesDisplay = document.getElementsByClassName('moves');
+
+//create list of icons based off of HTML
+const cardIcons = [];
+for (card of cards) {
+cardIcons.push(card.firstChild.nextSibling.className);
+}
+
+function resetCards() {
+  shuffle(cardIcons);
+  for (i = 0; i < 16; i++) {
+    cards[i].firstChild.nextSibling.className = cardIcons[i];
+  }
+}
+
+//initial shuffle of cards
+resetCards();
+
+//refresh button functionality
+let refresh = document.getElementById('refresh');
+refresh.addEventListener('click', function() {
+  resetCards();
+  moves = 0;
+  movesDisplay[0].innerHTML = moves;
+  for (card of cards) {
+  card.className = 'card';
+  }
+});
+
+//TODO need CSS transitions for cards
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -36,13 +69,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-let cards = document.getElementsByClassName('card');;
-let openCards = [];
-let moves = 0;
 
-function getCards() {
-  cards = document.getElementsByClassName('card');
-}
 
 for (card of cards) {
   card.addEventListener('click', function() {
@@ -81,8 +108,6 @@ function cardCounter(card) {
 
 function movesCounter() {
   moves++;
-  const movesDisplay = document.getElementsByClassName('moves');
-  console.log(movesDisplay);
   movesDisplay[0].innerHTML = moves;
   calcStars(moves);
 }
@@ -126,3 +151,5 @@ function fail(card0,card1) {
     card1.className = 'card'
   },1500)
 }
+
+//TODO need win sequence
