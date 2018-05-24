@@ -1,28 +1,14 @@
-/*
- * Create a list that holds all of your cards
- */
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
 }
 
 let cards = document.getElementsByClassName('card');
@@ -31,7 +17,7 @@ let moves = 0;
 let movesDisplay = document.getElementsByClassName('moves');
 let matches = 0;
 
-//create list of icons based off of HTML
+//create list of icons  based off of HTML
 const cardIcons = [];
 for (card of cards) {
 cardIcons.push(card.firstChild.nextSibling.className);
@@ -50,30 +36,19 @@ resetCards();
 //refresh button functionality
 let refresh = document.getElementById('refresh');
 refresh.addEventListener('click', function() {
-  resetCards();
-  moves = 0;
-  calcStars(moves);
-  matches = 0;
-  movesDisplay[0].innerHTML = moves;
   for (card of cards) {
   card.className = 'card';
   }
+  setTimeout(function() {
+    resetCards();
+    moves = 0;
+    calcStars(moves);
+    matches = 0;
+    movesDisplay[0].innerHTML = moves;
+  },500)
 });
 
-//TODO need CSS transitions for cards
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
-
-
+//listen for clicks on closed cards and respond with functions
 for (card of cards) {
   card.addEventListener('click', function() {
     if (this.className != 'card open show' && this.className != 'card match') {
@@ -140,12 +115,14 @@ function calcStars(moves) {
 }
 
 function match(card0,card1) {
-  card0.className = 'card match engorge'
-  card1.className = 'card match engorge'
+  setTimeout(function() {
+    card0.className = 'card match engorge'
+    card1.className = 'card match engorge'
+  },750)
   setTimeout(function() {
     card0.className = 'card match'
     card1.className = 'card match'
-  },1000)
+  },1250)
   matches++;
 }
 
@@ -177,13 +154,14 @@ function fail(card0,card1) {
 function win() {
   if (matches === 8) {
     const movesMessage = document.getElementById('movesMessage');
-    movesMessage.innerHTML = `You beat the game in ${moves} moves`;
-    // const
+    movesMessage.innerHTML = `You beat the game in ${moves} moves!`;
+    const stars = document.getElementById('stars').innerHTML;
+    const modalStars = document.getElementById('modalStars');
+    modalStars.innerHTML = stars;
     setTimeout(function() {
       modal.style.display = "block";
     },1000)
   }
-
 }
 
 const modal = document.getElementById('winModal');
