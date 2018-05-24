@@ -140,25 +140,45 @@ function calcStars(moves) {
 }
 
 function match(card0,card1) {
+  card0.className = 'card match engorge'
+  card1.className = 'card match engorge'
   setTimeout(function() {
     card0.className = 'card match'
     card1.className = 'card match'
-  },750)
+  },1000)
   matches++;
 }
 
 function fail(card0,card1) {
   setTimeout(function() {
+    card0.className = 'card open show shake'
+    card1.className = 'card open show shake'
+  },500)
+  setTimeout(function() {
+    card0.className = 'card open show shake2'
+    card1.className = 'card open show shake2'
+  },800)
+  setTimeout(function() {
+    card0.className = 'card open show shake'
+    card1.className = 'card open show shake'
+  },1100)
+  setTimeout(function() {
+    card0.className = 'card open show shake3'
+    card1.className = 'card open show shake3'
+  },1400)
+  setTimeout(function() {
     card0.className = 'card'
     card1.className = 'card'
-  },1500)
+  },1900)
 }
 
-//win sequence - based off of tutorial at https://www.w3schools.com/howto/howto_css_modals.asp
+//win sequence - modal based off of tutorial at
+//https://www.w3schools.com/howto/howto_css_modals.asp
 function win() {
   if (matches === 8) {
-    let movesMessage = document.getElementById('movesMessage');
+    const movesMessage = document.getElementById('movesMessage');
     movesMessage.innerHTML = `You beat the game in ${moves} moves`;
+    // const
     setTimeout(function() {
       modal.style.display = "block";
     },1000)
