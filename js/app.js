@@ -51,6 +51,7 @@ runTimer();
 let refresh = document.getElementById('refresh');
 refresh.addEventListener('click', function() {
   clearInterval(clock);
+  openCards = [];
   for (card of cards) {
   card.className = 'card';
   }
