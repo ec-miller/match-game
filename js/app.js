@@ -12,11 +12,15 @@ function shuffle(array) {
 }
 
 //variable declarations
-let cards = document.getElementsByClassName('card');
+const cards = document.getElementsByClassName('card');
 let openCards = [];
 let moves = 0;
-let movesDisplay = document.getElementsByClassName('moves');
+const movesDisplay = document.getElementsByClassName('moves');
+let seconds = 0;
+const secondsDisplay = document.getElementsByClassName('seconds');
+let clock;
 let matches = 0;
+
 
 //create list of icons based off of HTML
 const cardIcons = [];
@@ -32,12 +36,21 @@ function resetCards() {
   }
 }
 
+function runTimer() {
+  clock = setInterval( function() {
+    seconds++;
+    secondsDisplay[0].innerHTML = seconds;
+  }, 1000);
+}
+
 //initial shuffle of cards
 resetCards();
+runTimer();
 
 //refresh button functionality
 let refresh = document.getElementById('refresh');
 refresh.addEventListener('click', function() {
+  clearInterval(clock);
   for (card of cards) {
   card.className = 'card';
   }
@@ -47,6 +60,9 @@ refresh.addEventListener('click', function() {
     calcStars(moves);
     matches = 0;
     movesDisplay[0].innerHTML = moves;
+    seconds = 0;
+    secondsDisplay[0].innerHTML = 0;
+    runTimer();
   },500)
 });
 
@@ -155,8 +171,9 @@ function fail(card0,card1) {
 //https://www.w3schools.com/howto/howto_css_modals.asp
 function win() {
   if (matches === 8) {
+    clearInterval(clock);
     const movesMessage = document.getElementById('movesMessage');
-    movesMessage.innerHTML = `You beat the game in ${moves} moves!`;
+    movesMessage.innerHTML = `You beat the game in ${moves} moves and ${seconds} seconds!`;
     const stars = document.getElementById('stars').innerHTML;
     const modalStars = document.getElementById('modalStars');
     modalStars.innerHTML = stars;
