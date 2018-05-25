@@ -20,6 +20,8 @@ let seconds = 0;
 const secondsDisplay = document.getElementsByClassName('seconds');
 let clock;
 let matches = 0;
+let topScore = undefined;
+const topScoreDisplay = document.getElementsByClassName('topScore');
 
 
 //create list of icons based off of HTML
@@ -178,6 +180,10 @@ function fail(card0,card1) {
 function win() {
   if (matches === 8) {
     clearInterval(clock);
+    if (topScore === undefined || topScore > moves) {
+      topScore = moves;
+      topScoreDisplay[0].innerHTML = `Top Score: ${topScore}`;
+    }
     const movesMessage = document.getElementById('movesMessage');
     movesMessage.innerHTML = `You beat the game in ${moves} moves and ${seconds} seconds!`;
     const stars = document.getElementById('stars').innerHTML;
@@ -185,7 +191,7 @@ function win() {
     modalStars.innerHTML = stars;
     setTimeout(function() {
       modal.style.display = "block";
-    },1000)
+    },200)
   }
 }
 

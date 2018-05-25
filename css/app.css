@@ -134,8 +134,9 @@ header h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 640px;
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 .score-panel .stars {
@@ -153,10 +154,30 @@ header h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    display: inline-block;
+}
+
+.score-panel .holdStill {
+    background: rgba(255, 255, 255, 0);;
+    width: 2.2rem;
+    text-align: right;
+    display: inline-block;
 }
 
 .score-panel .seconds {
-    margin-left: 1rem;
+  padding-left: .5rem;
+  margin-right: .3rem;
+  display: inline-block;
+}
+
+.score-panel .moves {
+  padding-left: 1rem;
+  margin-right: .3rem;
+  display: inline-block;
+}
+
+.score-panel .topScore {
+    margin-left: 1.8rem;
 }
 
 /* The Modal */
