@@ -1,20 +1,19 @@
-# Memory Game Project
+# Match Game
+### Udacity Front-End Web Developer Nanodegree program
 
-## Table of Contents
+This app is Project 2 in the Udacity Front-End Web Developer Nanodegree program. To play the game
+visit this [page](https://ec-miller.github.io/match-game). Simply click on the cards to match
+the symbols and see how many stars you can earn!
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Technologies
+- HTML5
+- CSS3
+- Vanilla Javascript
+- Font Awesome
 
-## Instructions
+## History
+Repository created May 23rd, 2018
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## Credits
+Grow with Google and Udacity Front End Scholarship Program
+Starter Template [Here](https://github.com/udacity/fend-project-memory-game)  
