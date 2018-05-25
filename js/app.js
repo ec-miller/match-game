@@ -50,6 +50,10 @@ runTimer();
 //refresh button functionality
 let refresh = document.getElementById('refresh');
 refresh.addEventListener('click', function() {
+  refreshGame();
+});
+
+function refreshGame() {
   clearInterval(clock);
   openCards = [];
   for (card of cards) {
@@ -65,7 +69,7 @@ refresh.addEventListener('click', function() {
     secondsDisplay[0].innerHTML = 0;
     runTimer();
   },500)
-});
+}
 
 //listen for clicks on closed cards and respond with functions
 for (card of cards) {
@@ -187,9 +191,15 @@ function win() {
 
 const modal = document.getElementById('winModal');
 const span = document.getElementsByClassName("close")[0];
+const playAgain = document.getElementById('playAgain');
 
 span.onclick = function() {
     modal.style.display = "none";
+}
+
+playAgain.onclick = function() {
+    modal.style.display = "none";
+    refreshGame();
 }
 
 window.onclick = function(event) {
