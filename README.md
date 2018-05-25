@@ -8,7 +8,7 @@ the symbols and see how many stars you can earn!
 ## Technologies
 - HTML5
 - CSS3
-- Vanilla Javascript
+- JavaScript ES6
 - Font Awesome
 
 ## History
@@ -16,4 +16,5 @@ Repository created May 23rd, 2018
 
 ## Credits
 Grow with Google and Udacity Front End Scholarship Program
+
 Starter Template [Here](https://github.com/udacity/fend-project-memory-game)  
