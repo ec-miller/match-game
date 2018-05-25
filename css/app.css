@@ -30,7 +30,10 @@ body {
 
 h1 {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    /* font-weight: 300; */
+}
+
+header h1 {
     padding: 1.5rem;
 }
 
@@ -168,11 +171,17 @@ h1 {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 25% auto;
+    margin: 15rem auto;
     padding: 20px;
     border: 1px solid #888;
+    border-radius: 10px;
     width: 55%;
+    max-width: 500px;
     text-align: center;
+}
+
+.modal-content h1 {
+  padding: 1rem;
 }
 
 .close {
