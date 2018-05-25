@@ -120,17 +120,18 @@ function calcStars(moves) {
     star3.className = 'fa fa-star';
   } else if (moves < 14) {
     star3.className = 'fa fa-star-half-o';
-  } else if (moves < 16) {
+  } else if (moves < 17) {
     star3.className = 'fa fa-star-o';
-  } else if (moves < 19) {
+  } else if (moves < 20) {
     star2.className = 'fa fa-star-half-o';
-  } else if (moves < 21) {
+  } else if (moves < 23) {
     star2.className = 'fa fa-star-o';
-  } else if (moves < 24) {
-    star1.className = 'fa fa-star-half-o';
-  } else {
-    star1.className = 'fa fa-star-o';
   }
+  // } else if (moves < 26) {
+  //   star1.className = 'fa fa-star-half-o';
+  // } else {
+  //   star1.className = 'fa fa-star-o';
+  // }
 }
 
 function match(card0,card1) {
