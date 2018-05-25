@@ -11,18 +11,20 @@ function shuffle(array) {
   return array;
 }
 
+//variable declarations
 let cards = document.getElementsByClassName('card');
 let openCards = [];
 let moves = 0;
 let movesDisplay = document.getElementsByClassName('moves');
 let matches = 0;
 
-//create list of icons  based off of HTML
+//create list of icons based off of HTML
 const cardIcons = [];
 for (card of cards) {
 cardIcons.push(card.firstChild.nextSibling.className);
 }
 
+//apply shuffled icons to cards
 function resetCards() {
   shuffle(cardIcons);
   for (i = 0; i < 16; i++) {
@@ -51,7 +53,7 @@ refresh.addEventListener('click', function() {
 //listen for clicks on closed cards and respond with functions
 for (card of cards) {
   card.addEventListener('click', function() {
-    if (this.className != 'card open show' && this.className != 'card match') {
+    if (this.className == 'card') {
       showCard(this);
       cardCounter(this);
       win();
@@ -96,56 +98,56 @@ function calcStars(moves) {
   let star2 = document.getElementById('star2');
   let star3 = document.getElementById('star3');
   if (moves < 11) {
-    star1.className = 'fa fa-star'
-    star2.className = 'fa fa-star'
-    star3.className = 'fa fa-star'
+    star1.className = 'fa fa-star';
+    star2.className = 'fa fa-star';
+    star3.className = 'fa fa-star';
   } else if (moves < 14) {
-    star3.className = 'fa fa-star-half-o'
+    star3.className = 'fa fa-star-half-o';
   } else if (moves < 16) {
-    star3.className = 'fa fa-star-o'
+    star3.className = 'fa fa-star-o';
   } else if (moves < 19) {
-    star2.className = 'fa fa-star-half-o'
+    star2.className = 'fa fa-star-half-o';
   } else if (moves < 21) {
-    star2.className = 'fa fa-star-o'
+    star2.className = 'fa fa-star-o';
   } else if (moves < 24) {
-    star1.className = 'fa fa-star-half-o'
+    star1.className = 'fa fa-star-half-o';
   } else {
-    star1.className = 'fa fa-star-o'
+    star1.className = 'fa fa-star-o';
   }
 }
 
 function match(card0,card1) {
   setTimeout(function() {
-    card0.className = 'card match engorge'
-    card1.className = 'card match engorge'
+    card0.className = 'card match engorge';
+    card1.className = 'card match engorge';
   },750)
   setTimeout(function() {
-    card0.className = 'card match'
-    card1.className = 'card match'
+    card0.className = 'card match';
+    card1.className = 'card match';
   },1250)
   matches++;
 }
 
 function fail(card0,card1) {
   setTimeout(function() {
-    card0.className = 'card open show shake'
-    card1.className = 'card open show shake'
+    card0.className = 'card open show shake';
+    card1.className = 'card open show shake';
   },500)
   setTimeout(function() {
-    card0.className = 'card open show shake2'
-    card1.className = 'card open show shake2'
+    card0.className = 'card open show shake2';
+    card1.className = 'card open show shake2';
   },800)
   setTimeout(function() {
-    card0.className = 'card open show shake'
-    card1.className = 'card open show shake'
+    card0.className = 'card open show shake';
+    card1.className = 'card open show shake';
   },1100)
   setTimeout(function() {
-    card0.className = 'card open show shake3'
-    card1.className = 'card open show shake3'
+    card0.className = 'card open show shake3';
+    card1.className = 'card open show shake3';
   },1400)
   setTimeout(function() {
-    card0.className = 'card'
-    card1.className = 'card'
+    card0.className = 'card';
+    card1.className = 'card';
   },1900)
 }
 
