@@ -191,7 +191,7 @@ function win() {
     modalStars.innerHTML = stars;
     setTimeout(function() {
       modal.style.display = "block";
-    },200)
+    },501)
   }
 }
 
