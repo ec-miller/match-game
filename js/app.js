@@ -120,20 +120,20 @@ function calcStars(moves) {
   let star1 = document.getElementById('star1');
   let star2 = document.getElementById('star2');
   let star3 = document.getElementById('star3');
-  if (moves < 11) {
+  if (moves < 13) {
     star1.className = 'fa fa-star';
     star2.className = 'fa fa-star';
     star3.className = 'fa fa-star';
-  } else if (moves < 14) {
+  } else if (moves < 16) {
     star3.className = 'fa fa-star-half-o';
-  } else if (moves < 17) {
+  } else if (moves < 19) {
     star3.className = 'fa fa-star-o';
-  } else if (moves < 20) {
+  } else if (moves < 22) {
     star2.className = 'fa fa-star-half-o';
-  } else if (moves < 23) {
+  } else if (moves < 25) {
     star2.className = 'fa fa-star-o';
   }
-  // } else if (moves < 26) {
+  // } else if (moves < 27) {
   //   star1.className = 'fa fa-star-half-o';
   // } else {
   //   star1.className = 'fa fa-star-o';
